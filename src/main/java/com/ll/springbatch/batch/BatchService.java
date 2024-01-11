@@ -19,6 +19,7 @@ public class BatchService {
     public void runSimpleJob() {
         try {
             JobParameters jobParameters = new JobParametersBuilder()
+                    // 사용자가 임의로 생성할 경우는 임의로 생성 필요
                     .addString("id", String.valueOf(System.currentTimeMillis()))
                     .toJobParameters();
 

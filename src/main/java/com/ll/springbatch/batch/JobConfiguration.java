@@ -1,9 +1,11 @@
 package com.ll.springbatch.batch;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.id.IncrementGenerator;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -19,6 +21,7 @@ public class JobConfiguration {
     public Job myJob(JobRepository jobRepository, Step myStep) {
         return new JobBuilder("myJob", jobRepository)
                 .start(myStep)
+                .incrementer(new RunIdIncrementer()) // 배치가 자동으로 돌아갈 때만 작동함.
                 .build();
     }
 
