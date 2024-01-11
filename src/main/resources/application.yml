@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active: dev
+    include: secret
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  datasource:
+    url: jdbc:h2:mem:batch
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+        format_sql: true
+        highlight_sql: true
+        use_sql_comments: true
+  logging:
+    level:
+      com.ll.springbatch: INFO
+      org.hibernate.SQL: INFO
+      org.hibernate.orm.jdbc.bind: INFO
+      org.hibernate.orm.jdbc.extract: INFO
+      org.springframework.transaction.interceptor: INFO
+  batch:
+    jdbc:
+      initialize-schema: always
