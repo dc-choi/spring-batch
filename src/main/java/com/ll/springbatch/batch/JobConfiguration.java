@@ -1,7 +1,6 @@
 package com.ll.springbatch.batch;
 
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.id.IncrementGenerator;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
