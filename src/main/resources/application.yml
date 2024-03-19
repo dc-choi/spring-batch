@@ -20,6 +20,12 @@ spring:
         format_sql: true
         highlight_sql: true
         use_sql_comments: true
+        dialect: org.hibernate.dialect.H2Dialect
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false
   logging:
     level:
       com.ll.springbatch: INFO
@@ -27,6 +33,3 @@ spring:
       org.hibernate.orm.jdbc.bind: INFO
       org.hibernate.orm.jdbc.extract: INFO
       org.springframework.transaction.interceptor: INFO
-  batch:
-    jdbc:
-      initialize-schema: always
