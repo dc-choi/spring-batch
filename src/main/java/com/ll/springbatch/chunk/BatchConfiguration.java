@@ -1,7 +1,10 @@
 package com.ll.springbatch.chunk;
 
+import com.ll.springbatch.test.QTest;
 import com.ll.springbatch.test.Test;
 import com.ll.springbatch.test.TestRepository;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
@@ -12,6 +15,7 @@ import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.data.RepositoryItemReader;
 import org.springframework.batch.item.database.JpaPagingItemReader;
 import org.springframework.batch.item.database.builder.JpaPagingItemReaderBuilder;
 import org.springframework.context.annotation.Bean;
@@ -51,6 +55,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 @RequiredArgsConstructor
 public class BatchConfiguration {
     private final TestRepository testRepository;
+    private JPAQueryFactory queryFactory;
     private final EntityManagerFactory entityManagerFactory;
 
     @Bean
